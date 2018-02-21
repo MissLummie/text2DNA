@@ -1,5 +1,6 @@
 ### text2DNA
-[seyitzor.work/text2DNA](www.seyitzor.work/text2DNA/)
+[bioinzhener/text2DNA](https://github.com/bioinzhener/text2DNA)
+
 > Your name, text, even credit card number...
 > DNA encrypted.
 

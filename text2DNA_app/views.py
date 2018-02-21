@@ -6,10 +6,17 @@ import time
 
 
 def main_page(request):
+    """
+    for some reason the app urls isn't work, so I made this simple change to handle requests
+    :param request:
+    :return:
+    """
+    if request.POST.get('firstText'): return text_to_DNA(request)
+    if request.POST.get('inDNA'): return DNA_to_text(request)
     return render(request, 'text2DNA.html')
 
 
-def text_to_bits(text, encoding = 'utf-8', errors = 'surrogatepass'):
+def text_to_bits(text, encoding='utf-8', errors='surrogatepass'):
     bits = bin(int.from_bytes(text.encode(encoding, errors), 'big'))[2:]
     # bits = bin(int(text.encode('hex'), 16))[2:]
     return bits.zfill(8 * ((len(bits) + 7) // 8))
@@ -31,6 +38,7 @@ def text_to_DNA(request):
     # t = firstText.decode('utf-8')
     f.write(time.strftime("%d/%m/%y %R") + ' ' + str(firstText) + '\n')
     f.close()
+    print("seq:" ,seq)
     return render(request, 'text2DNA.html', {'seq': seq})
 
 
